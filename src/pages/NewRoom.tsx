@@ -36,7 +36,7 @@ export function NewRoom(): JSX.Element {
             <main>
                 <div className="main-container"> 
                     <img src={logoImg} alt="Letmeask" />
-                    <h1>Olá, {user?.name}</h1>
+                    <h1>Olá, {user?.name.substring(0,6)}</h1> 
                     <h2>Criar uma nova sala </h2>
                     <form onSubmit={handleCreateRoom}>
                         <input
