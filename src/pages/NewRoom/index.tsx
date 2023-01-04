@@ -1,11 +1,11 @@
-import illustrationImg from '../assets/images/illustration.svg';
+import illustrationImg from 'assets/images/illustration.svg';
+import logoImg from 'assets/images/logo.svg';
+import { Button } from 'components/Button';
+import { useAuth } from 'hooks/useAuth';
 import { FormEvent, useState } from 'react';
-import logoImg from '../assets/images/logo.svg';
-import '../styles/auth.scss';
-import { Button } from '../components/button';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
+import { database } from 'services/firebase';
+import './styles.scss';
 
 export const NewRoom = () => {
   const { user } = useAuth();

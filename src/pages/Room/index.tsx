@@ -1,16 +1,13 @@
+import logoImg from 'assets/images/logo.svg';
+import { Button } from 'components/Button';
+import { Question } from 'components/Question';
+import { RoomCode } from 'components/RoomCode';
+import { useAuth } from 'hooks/useAuth';
+import { useRoom } from 'hooks/useRoom';
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-import logoImg from '../assets/images/logo.svg';
-
-import { Button } from '../components/button';
-import { Question } from '../components/Question';
-import { RoomCode } from '../components/RoomCode';
-import { useAuth } from '../hooks/useAuth';
-import { useRoom } from '../hooks/useRoom';
-import { database } from '../services/firebase';
-
-import '../styles/room.scss';
+import { database } from 'services/firebase';
+import './styles.scss';
 
 type RoomParams = {
   id: string;
@@ -22,7 +19,7 @@ export const Room = () => {
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
 
-  const { title, questions } = useRoom(roomId);
+  const { title, questions } = useRoom(roomId || '');
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault();
@@ -70,7 +67,7 @@ export const Room = () => {
       <header>
         <div className="content">
           <img src={logoImg} alt="Letmeask" />
-          <RoomCode code={roomId} />
+          <RoomCode code={roomId || ''} />
         </div>
       </header>
 
