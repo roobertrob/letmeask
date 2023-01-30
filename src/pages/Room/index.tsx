@@ -7,6 +7,7 @@ import { useRoom } from 'hooks/useRoom';
 import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { database } from 'services/firebase';
+import { RxAvatar } from 'react-icons/rx';
 import './styles.scss';
 
 type RoomParams = {
@@ -14,7 +15,7 @@ type RoomParams = {
 };
 
 export const Room = () => {
-  const { user } = useAuth();
+  const { user, signInWithGoogle } = useAuth();
   const params = useParams<RoomParams>();
   const [newQuestion, setNewQuestion] = useState('');
   const roomId = params.id;
@@ -29,20 +30,22 @@ export const Room = () => {
     }
 
     if (!user) {
-      throw new Error('You must be logged in');
+      await signInWithGoogle();
     }
 
     const question = {
       content: newQuestion,
       author: {
-        name: user.name,
-        avatar: user.avatar,
+        name: user?.name,
+        avatar: user?.avatar,
       },
       isHighlighted: false,
       isAnswered: false,
     };
 
-    await database.ref(`rooms/${roomId}/questions`).push(question);
+    if (user) {
+      await database.ref(`rooms/${roomId}/questions`).push(question);
+    }
 
     setNewQuestion('');
   }
@@ -87,7 +90,11 @@ export const Room = () => {
           <div className="form-footer">
             {user ? (
               <div className="user-info">
-                <img src={user.avatar} alt={user.name} />
+                {user.avatar ? (
+                  <img src={user.avatar} alt={user.name} />
+                ) : (
+                  <RxAvatar />
+                )}
                 <span>{user.name}</span>
               </div>
             ) : (
