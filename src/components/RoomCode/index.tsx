@@ -5,9 +5,9 @@ type RoomCodeProps = {
   code: string;
 };
 
-export const RoomCode = (props: RoomCodeProps) => {
+export const RoomCode = ({ code }: RoomCodeProps) => {
   function copyRoomCodeToClipboard() {
-    navigator.clipboard.writeText(props.code);
+    navigator.clipboard.writeText(code);
   }
 
   return (
@@ -15,7 +15,7 @@ export const RoomCode = (props: RoomCodeProps) => {
       <div>
         <img src={copyImg} alt="Copy room code" />
       </div>
-      <span>Sala #{props.code} </span>
+      <span>Sala #{code} </span>
     </button>
   );
 };

@@ -5,3 +5,9 @@ exports[`<Button /> should render correctly 1`] = `
   class="button "
 />
 `;
+
+exports[`<Button /> should render correctly 2`] = `
+<button
+  class="button "
+/>
+`;
