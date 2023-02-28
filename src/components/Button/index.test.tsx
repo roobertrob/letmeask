@@ -6,7 +6,6 @@ describe('<Button />', () => {
   it('should render correctly', () => {
     const { container } = render(<Button />);
     expect(container.firstChild).toMatchSnapshot();
-    expect(container.firstChild).toMatchSnapshot();
   });
   it('should render button with variant outlined', () => {
     render(<Button isOutlined />);
