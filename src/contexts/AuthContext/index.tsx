@@ -1,20 +1,6 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { auth, firebase } from 'services/firebase';
-
-type User = {
-  id: string;
-  name: string;
-  avatar: string;
-};
-
-type AuthContextType = {
-  user: User | undefined;
-  signInWithGoogle: () => Promise<void>;
-};
-
-type AuthContextProviderProps = {
-  children: ReactNode;
-};
+import { AuthContextType, AuthContextProviderProps, User } from './types';
 
 export const AuthContext = createContext({} as AuthContextType);
 
@@ -23,6 +9,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log(user);
       if (user) {
         const { displayName, photoURL, uid } = user;
 
@@ -47,6 +34,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     const provider = new firebase.auth.GoogleAuthProvider();
 
     const result = await auth.signInWithPopup(provider);
+    console.log(result);
 
     if (result.user) {
       const { displayName, photoURL, uid } = result.user;

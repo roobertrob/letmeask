@@ -6,7 +6,7 @@ describe('<RoomCode />', () => {
     const code = 'ABCD1234';
     render(<RoomCode code={code} />);
     expect(screen.findAllByAltText('Copy room code')).toBeInTheDocument;
-    expect(screen.getByText(`Sala #${code}`)).toBeInTheDocument;
+    expect(screen.getByText(`Room #${code}`)).toBeInTheDocument;
   });
   it('copyRoomCodeToClipboard function is called on click', () => {
     const code = 'ABCD1234';

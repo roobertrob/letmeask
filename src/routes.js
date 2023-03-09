@@ -1,46 +1,17 @@
-import { useAuth } from 'contexts/AuthContextProvider';
-import {
-  BrowserRouter,
-  Navigate,
-  Outlet,
-  Route,
-  Routes as RouterRoutes,
-} from 'react-router-dom';
-
-const VerifyPrivateRoute = ({ signed = false }) => {
-  if (!signed) {
-    return <Navigate to="/" replace={true} />;
-  }
-
-  return <Outlet />;
-};
+import { BrowserRouter, Route, Routes as RouterRoutes } from 'react-router-dom';
+import { AdminRoom } from './pages/AdminRoom';
+import { Home } from './pages/Home';
+import { NewRoom } from './pages/NewRoom';
+import { Room } from './pages/Room';
 
 const Routes = () => {
-  const { user } = useAuth();
-  const signed = !!user;
-
   return (
-    <BrowserRouter basename="/platforms">
+    <BrowserRouter>
       <RouterRoutes>
-        {signed ? (
-          <>
-            <Route element={<VerifyPrivateRoute signed={signed} />}>
-              <Route index element={<Logged />} />
-            </Route>
-          </>
-        ) : (
-          <>
-            <Route index element={<Home />} />
-            <Route path="/auth" element={<Login />} />
-            <Route path="/auth/recovery" element={<SentRecoveryEmail />} />
-            <Route
-              path="/auth/recovery/password"
-              element={<PasswordRecovery />}
-            />
-          </>
-        )}
-
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" index element={<Home />} />
+        <Route path="/rooms/new" index element={<NewRoom />} />
+        <Route path="/rooms/:id" element={<Room />} />
+        <Route path="/admin/rooms/:id" element={<AdminRoom />} />
       </RouterRoutes>
     </BrowserRouter>
   );

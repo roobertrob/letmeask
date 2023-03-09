@@ -39,7 +39,7 @@ export const AdminRoom = () => {
   }
 
   async function handleDeleteQuestion(questionId: string) {
-    if (window.confirm('Tem certeza que deseja excluir essa pergunta?')) {
+    if (window.confirm('Are you sure do you wanna delete this question?')) {
       await database.ref(`rooms/${roomId}/questions/${questionId}`).remove();
     }
   }
@@ -52,7 +52,7 @@ export const AdminRoom = () => {
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>
-              Encerrar sala
+              End room
             </Button>
           </div>
         </div>
@@ -60,48 +60,51 @@ export const AdminRoom = () => {
 
       <main className="content">
         <div className="room-title">
-          <h1>Sala {title}</h1>
-          {questions.length > 0 && <span> {questions.length} pergunta(s)</span>}
+          <h1>Room {title}</h1>
+          {questions.length > 0 && <span> {questions.length} question(s)</span>}
         </div>
 
         <div className="question-list">
-          {questions.map((question) => {
-            return (
-              <Question
-                key={question.id}
-                content={question.content}
-                author={question.author}
-                isAnswered={question.isAnswered}
-                isHighLighted={question.isHighLighted}
-              >
-                {!question.isAnswered && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                    >
-                      <img
-                        src={checkImg}
-                        alt="Marcar pergunta como respondida"
-                      />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleHighlightQuestion(question.id)}
-                    >
-                      <img src={answerImg} alt="Dar destaque a pergunta" />
-                    </button>
-                  </>
-                )}
-                <button
-                  type="button"
-                  onClick={() => handleDeleteQuestion(question.id)}
+          {questions.length > 1 ? (
+            questions.map((question) => {
+              return (
+                <Question
+                  key={question.id}
+                  content={question.content}
+                  author={question.author}
+                  isAnswered={question.isAnswered}
+                  isHighLighted={question.isHighLighted}
                 >
-                  <img src={deleteImg} alt="Remover pergunta" />
-                </button>
-              </Question>
-            );
-          })}
+                  {!question.isAnswered && (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleCheckQuestionAsAnswered(question.id)
+                        }
+                      >
+                        <img src={checkImg} alt="check as answered" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleHighlightQuestion(question.id)}
+                      >
+                        <img src={answerImg} alt="Highlight question" />
+                      </button>
+                    </>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteQuestion(question.id)}
+                  >
+                    <img src={deleteImg} alt="Remove Question" />
+                  </button>
+                </Question>
+              );
+            })
+          ) : (
+            <div>No questions</div>
+          )}
         </div>
       </main>
     </div>
