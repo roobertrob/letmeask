@@ -3,18 +3,15 @@
   align-items: stretch;
   height: 100vh;
   overflow-y: hidden;
+  background: #080A1F;
 
   aside {
-    flex: 7;
-    background: #835afd;
-    color: #fff;
     display: flex;
+    color: #f4f4f4;
+    display: flex;
+    background: #080A1F;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 80px;
-    img {
-      max-width: 320px;
-    }
 
     strong {
       font-family: 'Poppins', sans-serif;
@@ -31,8 +28,9 @@
     }
   }
   main {
-    flex: 8;
-    padding: 0px 32px;
+    background: #f4f4f4;
+    margin: 1%;
+    border-radius:20px ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +46,6 @@
     align-items: stretch;
     text-align: center;
     width: 100%;
-    max-width: 320px;
 
     > img {
       align-self: justify;
@@ -64,7 +61,7 @@
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: #fff;
+        background: #f4f4f4;
         border: 1px solid #a8a8b3;
       }
       button {
@@ -90,7 +87,7 @@
   border-radius: 8px;
   font-weight: 500;
   background: #ea4335;
-  color: #fff;
+  color: #f4f4f4;
 
   display: flex;
   justify-content: center;

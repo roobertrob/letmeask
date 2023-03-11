@@ -1,0 +1,17 @@
+.carousel {
+  padding: 1%;
+  padding-top: 0;
+
+  .image-container {
+    display: flex;
+
+    img{
+      align-items: center;
+      justify-content: center;
+      width: 90%;
+      height: 90%;
+      margin: 0 auto;
+      border-radius: 20px;
+    }
+  }
+}

@@ -12,7 +12,7 @@
 
   &.highLighted{
     background: #f4f0ff;
-    border: 1px solid #835AFD;
+    border: 1px solid #312161;
 
     footer .user-info span {
       color: #29292e;
@@ -73,10 +73,10 @@
           filter: brightness(0.7);
         }
         &.liked{
-          color: #835AFD;
+          color: #312161;
 
           svg path{
-            stroke: #835AFD
+            stroke: #312161
           }
         }
       }

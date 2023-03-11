@@ -1,4 +1,3 @@
-import illustrationImg from 'assets/images/illustration.svg';
 import logoImg from 'assets/images/logo.svg';
 import { Button } from 'components/Button';
 import { useAuth } from 'hooks/useAuth';
@@ -31,33 +30,29 @@ export const NewRoom = () => {
 
   return (
     <div id="page-auth">
-      <aside>
-        <img
-          src={illustrationImg}
-          alt="Ilustração simbolizando perguntas e respostas"
-        />
-        <strong> Crie salas de Q&amp;A ao vivo</strong>
-        <p>Tire as dúvidas sobre sua audiência em tempo real</p>
-      </aside>
       <main>
         <div className="main-container">
-          <img src={logoImg} alt="Letmeask" />
-          <h1>Olá, {user?.name}</h1>
-          <h2>Criar uma nova sala </h2>
+          <h1>Hey, {user?.name}</h1>
+          <h2>Choose your room name </h2>
           <form onSubmit={handleCreateRoom}>
             <input
               type="text"
-              placeholder="Nome da sala"
+              placeholder="Room name"
               onChange={(event) => setNewRoom(event.target.value)}
             />
 
-            <Button type="submit">Criar sala</Button>
+            <Button type="submit" disabled={!newRoom}>
+              Create room
+            </Button>
           </form>
           <p>
-            Quer entrar em uma sala existente? <Link to="/">Clique aqui</Link>{' '}
+            You wanna join in a existent room? <Link to="/">Click here</Link>{' '}
           </p>
         </div>
       </main>
+      <aside>
+        <img src={logoImg} alt="" />
+      </aside>
     </div>
   );
 };
