@@ -1,7 +1,7 @@
 import answerImg from 'assets/images/answer.svg';
 import checkImg from 'assets/images/check.svg';
 import deleteImg from 'assets/images/delete.svg';
-import logoImg from 'assets/images/logo.svg';
+import logoImg from 'assets/images/logo.png';
 import { Button } from 'components/Button';
 import { Question } from 'components/Question';
 import { RoomCode } from 'components/RoomCode';
@@ -48,7 +48,9 @@ export const AdminRoom = () => {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <div>
+            <img src={logoImg} alt="" id="logo-img" />
+          </div>
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>

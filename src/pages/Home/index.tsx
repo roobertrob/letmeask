@@ -1,6 +1,6 @@
 import googleIconImg from 'assets/images/google-icon.svg';
 import illustrationImg from 'assets/images/illustration.svg';
-import logoImg from 'assets/images/logo.svg';
+import logoImg from 'assets/images/logo.png';
 import { Button } from 'components/Button';
 import { useAuth } from 'hooks/useAuth';
 import { FormEvent, useState } from 'react';
@@ -49,7 +49,7 @@ export const Home = () => {
     <div id="page-auth">
       <main>
         <div className="main-container">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={logoImg} alt="" />
 
           <button onClick={handleCreateRoom} className="create-room">
             <img src={googleIconImg} alt="" />

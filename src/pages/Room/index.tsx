@@ -1,4 +1,4 @@
-import logoImg from 'assets/images/logo.svg';
+import logoImg from 'assets/images/logo.png';
 import { Button } from 'components/Button';
 import { Question } from 'components/Question';
 import { RoomCode } from 'components/RoomCode';
@@ -69,20 +69,20 @@ export const Room = () => {
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={logoImg} alt="" />
           <RoomCode code={roomId || ''} />
         </div>
       </header>
 
       <main>
         <div className="room-title">
-          <h1>Sala {title}</h1>
-          {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
+          <h1>Room {title}</h1>
+          {questions.length > 0 && <span>{questions.length} question(s)</span>}
         </div>
 
         <form onSubmit={handleSendQuestion}>
           <textarea
-            placeholder="O que você quer perguntar?"
+            placeholder="What do you wanna ask?"
             onChange={(event) => setNewQuestion(event.target.value)}
             value={newQuestion}
           />
@@ -99,11 +99,11 @@ export const Room = () => {
               </div>
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>.
+                To ask a question, <button>you have to login</button>.
               </span>
             )}
             <Button type="submit" disabled={!user}>
-              Enviar pergunta
+              Send question
             </Button>
           </div>
         </form>
@@ -122,7 +122,7 @@ export const Room = () => {
                   <button
                     className={`like-button ${question.likeId ? 'liked' : ''}`}
                     type="button"
-                    aria-label="Marcar como gostei"
+                    aria-label="Like question"
                     onClick={() =>
                       handleLikeQuestion(question.id, question.likeId)
                     }

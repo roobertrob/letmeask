@@ -1,4 +1,4 @@
-import logoImg from 'assets/images/logo.svg';
+import logoImg from 'assets/images/logo.png';
 import { Button } from 'components/Button';
 import { useAuth } from 'hooks/useAuth';
 import { FormEvent, useState } from 'react';
@@ -51,7 +51,7 @@ export const NewRoom = () => {
         </div>
       </main>
       <aside>
-        <img src={logoImg} alt="" />
+        <img src={logoImg} alt="" id="logo-img" />
       </aside>
     </div>
   );
