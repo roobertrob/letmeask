@@ -99,7 +99,11 @@ export const Room = () => {
               </div>
             ) : (
               <span>
-                To ask a question, <button>you have to login</button>.
+                To ask a question,
+                <button onClick={async () => await signInWithGoogle()}>
+                  you have to login
+                </button>
+                .
               </span>
             )}
             <Button type="submit" disabled={!user}>
